@@ -1,6 +1,11 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import { currentUser } from '@/constants/config'
+import {currentUser} from '@/constants/config'
+import axios from 'axios'
+import AuthenticationUtils from '../../common/AuthenticationUtils'
+
+axios.defaults.headers.common['Authorization'] = AuthenticationUtils.accessToken
+const DOMAIN = 'http://localhost:8005'
 
 export default {
   state: {
@@ -38,33 +43,32 @@ export default {
     }
   },
   actions: {
+    async login ({commit}, payload) {
+      const params = {
+        grant_type: 'password',
+        client_id: 2,
+        client_secret: 'DFF6f2IX9TOhZ2vqH73xYQlxS92ogMpxPTY1fDQx',
+        username: 'phamminhcuong1704bnfrv@gmail.com',
+        password: 123456,
+        provider: 'users'
+      }
 
-    login ({ commit }, payload) {
-      commit('clearError')
-      commit('setProcessing', true)
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(payload.email, payload.password)
-        .then(
-          user => {
-            const item = { uid: user.user.uid, ...currentUser }
-            localStorage.setItem('user', JSON.stringify(item))
-            commit('setUser', { uid: user.user.uid, ...currentUser })
-          },
-          err => {
-            localStorage.removeItem('user')
-            commit('setError', err.message)
-          }
-        )
+      try {
+        const res = await axios.post(DOMAIN + '/api/login', params);
+        AuthenticationUtils.saveAuthenticationData(res.data.data);
+      } catch (e) {
+        console.log(e)
+      }
     },
-    signOut ({ commit }) {
+    signOut ({commit}) {
       firebase
         .auth()
         .signOut()
         .then(() => {
           localStorage.removeItem('user')
           commit('setLogout')
-        }, _error => {})
-    }
-  }
+        }, _error => {
+        })
+    },
+  },
 }

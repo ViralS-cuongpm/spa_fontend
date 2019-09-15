@@ -14,7 +14,12 @@
     "bootstrap-vue": "^2.0.0-rc.15",
     "chart.js": "^2.8.0",
     "core-js": "^3.1.4",
+    "crypto-js": "^3.1.9-1",
+    "ethereumjs-util": "^6.1.0",
     "firebase": "^5.9.1",
+    "js-crypto-rsa": "^0.5.9",
+    "jsencrypt": "^3.0.0-rc.1",
+    "url-join": "^4.0.1",
     "v-calendar": "^0.9.7",
     "v-contextmenu": "^2.8.0",
     "video.js": "^7.4.1",
@@ -42,7 +47,8 @@
     "vuedraggable": "^2.19.3",
     "vuelidate": "^0.7.4",
     "vuetable-2": "^1.7.5",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "web3": "^1.2.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",

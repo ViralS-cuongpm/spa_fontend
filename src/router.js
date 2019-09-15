@@ -71,7 +71,8 @@ const routes = [
           { path: 'navigation', component: () => import(/* webpackChunkName: "ui" */ './views/app/ui/Navigation') },
           { path: 'popover-tooltip', component: () => import(/* webpackChunkName: "ui" */ './views/app/ui/PopoverTooltip') },
           { path: 'sortable', component: () => import(/* webpackChunkName: "ui" */ './views/app/ui/Sortable') },
-          { path: 'tables', component: () => import(/* webpackChunkName: "ui" */ './views/app/ui/Tables') }
+          { path: 'tables', component: () => import(/* webpackChunkName: "ui" */ './views/app/ui/Tables') },
+          { path: 'home', component: () => import(/* webpackChunkName: "ui" */ './views/english/English') },
         ]
       }
     ]
@@ -84,9 +85,42 @@ const routes = [
     children: [
       { path: 'login', component: () => import(/* webpackChunkName: "user" */ './views/user/Login') },
       { path: 'register', component: () => import(/* webpackChunkName: "user" */ './views/user/Register') },
-      { path: 'forgot-password', component: () => import(/* webpackChunkName: "user" */ './views/user/ForgotPassword') }
+      { path: 'forgot-password', component: () => import(/* webpackChunkName: "user" */ './views/user/ForgotPassword') },
     ]
   },
+    /*
+      English
+     */
+  {
+    path: '/english',
+    component: () => import(/* webpackChunkName: "app" */ './views/english/Layout'),
+    redirect: '/english/home',
+    children: [
+      { path: 'home', component: () => import(/* webpackChunkName: "ui" */ './views/english/English') },
+    ]
+  },
+    /*
+    Admin
+     */
+  {
+    path: '/admin',
+    component: () => import(/* webpackChunkName: "app" */ './views/admin/Layout'),
+    redirect: '/admin',
+    children: [
+      { path: 'subject', component: () => import(/* webpackChunkName: "ui" */ './views/admin/subject/Index') },
+      { path: 'subject/edit/:id', component: () => import(/* webpackChunkName: "ui" */ './views/admin/subject/Update') },
+      { path: 'subject/create', component: () => import(/* webpackChunkName: "ui" */ './views/admin/subject/Create') },
+    ]
+  },
+  {
+    path: '/mam',
+    component: () => import(/* webpackChunkName: "app" */ './views/mam/Layout'),
+    redirect: '/app/ui/alerts',
+    children: [
+      { path: 'view', component: () => import(/* webpackChunkName: "ui" */ './views/mam/fund/Index') },
+    ]
+  },
+
   { path: '*', component: () => import(/* webpackChunkName: "error" */ './views/Error') }
 ]
 

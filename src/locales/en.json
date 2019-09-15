@@ -79,7 +79,12 @@
     "hidden": "Hidden",
     "visible": "Visible",
     "tables": "Tables",
-    "maps": "Maps"
+    "maps": "Maps",
+    "subject": "Subject",
+    "user": "User",
+    "admin": "Admin",
+    "crazy": "Crazy"
+
   },
 
   "dashboards": {

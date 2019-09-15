@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import app from '../main'
+import enlish from './modules/english'
 import menu from './modules/menu'
 import user from './modules/user'
 import chat from './modules/chat'

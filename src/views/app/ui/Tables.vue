@@ -123,9 +123,13 @@ import { apiUrl } from '@/constants/config'
 import axios from 'axios'
 import Vuetable from 'vuetable-2/src/components/Vuetable'
 import VuetablePaginationBootstrap from '@/components/Common/VuetablePaginationBootstrap'
+import CustomActions from './Table/CustomActions'
+import Vue from 'vue'
+Vue.component('custom-actions', CustomActions)
 
 export default {
   components: {
+    // CustomActions,
     Vuetable,
     VuetablePaginationBootstrap
   },
@@ -136,37 +140,77 @@ export default {
         { id: 2, first_name: 'Jacob', last_name: 'Thornton', username: '@fat' },
         { id: 3, first_name: 'Lary', last_name: 'the Bird', username: '@twitter' }
       ],
+      // vuetableItems: {
+      //   apiUrl: apiUrl + '/cakes/fordatatable',
+      //   fields: [
+      //     {
+      //       name: 'title',
+      //       sortField: 'title',
+      //       title: 'Name',
+      //       titleClass: '',
+      //       dataClass: 'list-item-heading'
+      //     },
+      //     {
+      //       name: 'sales',
+      //       sortField: 'sales',
+      //       title: 'Sales',
+      //       titleClass: '',
+      //       dataClass: 'text-muted'
+      //     },
+      //     {
+      //       name: 'stock',
+      //       sortField: 'stock',
+      //       title: 'Stock',
+      //       titleClass: '',
+      //       dataClass: 'text-muted'
+      //     },
+      //     {
+      //       name: 'category',
+      //       sortField: 'category',
+      //       title: 'Category',
+      //       titleClass: '',
+      //       dataClass: 'text-muted'
+      //     }
+      //   ]
+      // },
       vuetableItems: {
-        apiUrl: apiUrl + '/cakes/fordatatable',
+        // apiUrl: apiUrl + '/cakes/fordatatable',
+        apiUrl: 'http://localhost:8001/api/admin/v1/funds',
         fields: [
           {
-            name: 'title',
-            sortField: 'title',
-            title: 'Name',
-            titleClass: '',
-            dataClass: 'list-item-heading'
+            name: 'id',
+            sortField: 'id',
+            title: 'ID',
+            // titleClass: '',
+            // dataClass: 'list-item-heading'
           },
           {
-            name: 'sales',
-            sortField: 'sales',
-            title: 'Sales',
-            titleClass: '',
-            dataClass: 'text-muted'
+            name: 'broker_id',
+            // sortField: 'broker_id',
+            title: 'Broker',
+            // titleClass: '',
+            // dataClass: 'text-muted'
           },
           {
-            name: 'stock',
-            sortField: 'stock',
-            title: 'Stock',
-            titleClass: '',
-            dataClass: 'text-muted'
+            name: 'is_active',
+            // sortField: 'is_active',
+            title: 'Active',
+            // titleClass: '',
+            // dataClass: 'text-muted'
           },
           {
-            name: 'category',
-            sortField: 'category',
-            title: 'Category',
-            titleClass: '',
-            dataClass: 'text-muted'
-          }
+            name: 'lot',
+            // sortField: 'lot',
+            title: 'Lot',
+            // titleClass: '',
+            // dataClass: 'text-muted'
+          },
+          {
+            name: '__component:custom-actions',
+            title: 'Actions',
+            titleClass: 'center aligned',
+            dataClass: 'center aligned',
+          },
         ]
       },
       currentPage: 1,

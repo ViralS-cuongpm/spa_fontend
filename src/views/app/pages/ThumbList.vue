@@ -13,7 +13,7 @@
           <b-button-group>
             <b-dropdown split right @click="selectAll(true)" class="check-button" variant="primary">
               <label
-                class="custom-control custom-checkbox pl-4 mb-0 d-inline-block"
+                class="custom-control custom-checnpkbox pl-4 mb-0 d-inline-block"
                 slot="button-content"
               >
                 <input
